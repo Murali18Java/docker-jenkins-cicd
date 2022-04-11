@@ -17,7 +17,7 @@ pipeline{
 
 		stage('Login') {
 
-			steps 
+			steps {
 
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
@@ -30,7 +30,8 @@ pipeline{
 				sh 'docker push $DOCKERHUB_CREDENTIALS_USR/docker-jenkins-cicd:1.5'
 			}
 		}
-	
+	}
+
 	post {
 		always {
 			sh 'docker logout'
