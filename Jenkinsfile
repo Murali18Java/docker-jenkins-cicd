@@ -11,13 +11,13 @@ pipeline{
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t docker-jenkins-cicd:1.4 .'
+				sh 'docker build -t docker-jenkins-cicd:1.5 .'
 			}
 		}
 
 		stage('Login') {
 
-			steps {
+			steps 
 
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
@@ -26,8 +26,8 @@ pipeline{
 		stage('Push') {
 
 			steps {
-                sh 'docker tag docker-jenkins-cicd:1.4 $DOCKERHUB_CREDENTIALS_USR/docker-jenkins-cicd:1.4'
-				sh 'docker push $DOCKERHUB_CREDENTIALS_USR/docker-jenkins-cicd:1.4'
+                sh 'docker tag docker-jenkins-cicd:1.5 $DOCKERHUB_CREDENTIALS_USR/docker-jenkins-cicd:1.5'
+				sh 'docker push $DOCKERHUB_CREDENTIALS_USR/docker-jenkins-cicd:1.5'
 			}
 		}
 	}
