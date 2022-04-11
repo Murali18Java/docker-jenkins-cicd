@@ -30,8 +30,7 @@ pipeline{
 				sh 'docker push $DOCKERHUB_CREDENTIALS_USR/docker-jenkins-cicd:1.5'
 			}
 		}
-	}
-
+	
 	post {
 		always {
 			sh 'docker logout'
